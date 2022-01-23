@@ -1,14 +1,17 @@
 import dayjs from "dayjs";
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
 import StarRatingComponent from "react-star-rating-component";
+import Popup from "./Popup";
+import "./Popup.css";
 
 export default function Day({ day, rowIdx, colIdx }) {
   const { monthIndex, setMonthIndex, postData, setPostData } =
     useContext(GlobalContext);
   // postData is an array
 
+  const [buttonPopup, setButtonPopup] = useState(false);
   function getCurrentDay() {
     return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY")
       ? "bg-blue-600 text-white rounded-full w-7"
@@ -68,13 +71,32 @@ export default function Day({ day, rowIdx, colIdx }) {
           />
         </div>
         {mediaArr.length !== 0 && (
-          <img
-            className="h-30 w-20 mb-2"
-            src={`${getUrl()}`}
-            onClick={() => {
-              alert("hello");
-            }}
-          ></img>
+          <React.Fragment>
+            <img
+              className="h-30 w-20 mb-2"
+              src={`${getUrl()}`}
+              onClick={() => {
+                setButtonPopup(true);
+              }}
+            ></img>
+            <Popup
+              trigger={buttonPopup}
+              setTrigger={setButtonPopup}
+              mediaArr={mediaArr}
+            >
+              {mediaArr.length !== 0 && (
+                <img
+                  className="pop-img"
+                  src={`${getUrl()}`}
+                  onClick={() => {
+                    setButtonPopup(true);
+                  }}
+                ></img>
+              )}
+
+              <p> This is my image triggered popup.</p>
+            </Popup>
+          </React.Fragment>
         )}
       </header>
     </div>
