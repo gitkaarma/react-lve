@@ -5,6 +5,7 @@ import GlobalContext from "../context/GlobalContext";
 import StarRatingComponent from "react-star-rating-component";
 import Popup from "./Popup";
 import "./Popup.css";
+import { Rating } from "react-simple-star-rating";
 
 export default function Day({ day, rowIdx, colIdx }) {
   const { monthIndex, setMonthIndex, postData, setPostData } =
@@ -19,6 +20,7 @@ export default function Day({ day, rowIdx, colIdx }) {
   }
   const mediaArr = getMediaArray();
   const starval = getrating();
+  const distext = getText();
   function getMediaArray() {
     for (let idx in postData) {
       var dateTime = postData[idx].calendardatetime;
@@ -41,6 +43,17 @@ export default function Day({ day, rowIdx, colIdx }) {
     return 0;
   }
 
+  function getText() {
+    for (let idx in postData) {
+      var dateTime = postData[idx].calendardatetime;
+      dateTime = dateTime.substr(0, 10);
+      if (dateTime === day.format("YYYY-MM-DD")) {
+        return postData[idx].text;
+      }
+    }
+    return "";
+  }
+
   function getUrl() {
     if (mediaArr.length) {
       return mediaArr[0].mediaurl;
@@ -61,11 +74,11 @@ export default function Day({ day, rowIdx, colIdx }) {
         <p className={`text-sm p-1 my-1 text-center ${getCurrentDay()} mb-0`}>
           {day.format("DD")}
         </p>
-        <div className="">
+        <div>
           <StarRatingComponent
             name="rate"
             editing={false}
-            renderStarIcon={() => <span>&#11088;</span>}
+            renderStarIcon={() => <span className="star-rate">&#9733;</span>}
             starCount={starval}
             value={8}
           />
@@ -93,8 +106,33 @@ export default function Day({ day, rowIdx, colIdx }) {
                   }}
                 ></img>
               )}
-
-              <p> This is my image triggered popup.</p>
+              <div className="total">
+                <div className="middle">
+                  <div className="legendcode">abc</div>
+                  <div className="star">
+                    <StarRatingComponent
+                      name="rate"
+                      editing={false}
+                      renderStarIcon={() => (
+                        <span className="star-rate">&#9733;</span>
+                      )}
+                      starCount={starval}
+                      value={8}
+                    />
+                  </div>
+                </div>
+                <div className="head-date">
+                  <h3> {day.format("DD MMMM")}</h3>
+                </div>
+                <div className="para">
+                  <p>
+                    Had an amazing hair cut and color from my styling today! My
+                    curls have never felt so defined and voluminous.
+                  </p>
+                </div>
+              </div>
+              <hr className="solid"></hr>
+              <p className="last">View Full Post</p>
             </Popup>
           </React.Fragment>
         )}

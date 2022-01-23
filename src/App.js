@@ -70,6 +70,7 @@ function App() {
       .post("https://api.quinn.care/graph", mango)
       .then((res) => {
         setPostData(res.data.responseobjects[0].posts);
+        console.log(res.data.responseobjects[0].posts);
       })
       .catch((err) => {
         console.log(err);
@@ -85,8 +86,8 @@ function App() {
           hasMore={true}
           className="flex flex-1 h-screen"
         > */}
-        
-          {<Month month={currentMonth} />}
+
+        {<Month month={currentMonth} />}
         {/* </InfiniteScroll> */}
       </div>
     </React.Fragment>
