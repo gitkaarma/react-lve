@@ -6,6 +6,11 @@ import StarRatingComponent from "react-star-rating-component";
 import Popup from "./Popup";
 import "./Popup.css";
 import { Rating } from "react-simple-star-rating";
+import scissors from "../assets/scissors.png";
+import rainbow from "../assets/rainbow.png";
+import pr from "../assets/pr.png";
+import sun from "../assets/sun.png";
+import fat from "../assets/fat.png";
 
 export default function Day({ day, rowIdx, colIdx }) {
   const { monthIndex, setMonthIndex, postData, setPostData } =
@@ -21,6 +26,7 @@ export default function Day({ day, rowIdx, colIdx }) {
   const mediaArr = getMediaArray();
   const starval = getrating();
   const distext = getText();
+  const datee = parseInt(day.format("DD")) % 2 === 0 ? true : false;
   function getMediaArray() {
     for (let idx in postData) {
       var dateTime = postData[idx].calendardatetime;
@@ -108,7 +114,22 @@ export default function Day({ day, rowIdx, colIdx }) {
               )}
               <div className="total">
                 <div className="middle">
-                  <div className="legendcode">abc</div>
+                  <div className="legendcode">
+                    {datee && (
+                      <React.Fragment>
+                        <img className="icons" src={scissors} alt="" />
+                        <img className="icons" src={rainbow} alt="" />
+                        <img className="icons" src={pr} alt="" />
+                      </React.Fragment>
+                    )}
+                    {!datee && (
+                      <React.Fragment>
+                        <img className="icons" src={sun} alt="" />
+                        <img className="icons" src={fat} alt="" />
+                      </React.Fragment>
+                    )}
+                    {/* { && ()} */}
+                  </div>
                   <div className="star">
                     <StarRatingComponent
                       name="rate"
