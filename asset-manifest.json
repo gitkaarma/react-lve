@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-lve/static/css/main.ca4adaf5.css",
+    "main.js": "/react-lve/static/js/main.2556179d.js",
+    "static/js/787.36ededa5.chunk.js": "/react-lve/static/js/787.36ededa5.chunk.js",
+    "index.html": "/react-lve/index.html",
+    "main.ca4adaf5.css.map": "/react-lve/static/css/main.ca4adaf5.css.map",
+    "main.2556179d.js.map": "/react-lve/static/js/main.2556179d.js.map",
+    "787.36ededa5.chunk.js.map": "/react-lve/static/js/787.36ededa5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca4adaf5.css",
+    "static/js/main.2556179d.js"
+  ]
+}
