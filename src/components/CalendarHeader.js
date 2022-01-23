@@ -31,7 +31,7 @@ export default function CalendarHeader() {
       <div className="flex">
         <img src={logo} alt="calendar" className="mr-2 w-12 h-12" />
         <h1 className="mr-10 mt-2 text-xl text-gray-500 fond-bold random">
-          <span className="text-sky-600 hover:underline font-bold">my</span>{" "}
+          <span className="text-sky-600 hover:underline font-bold">myyy</span>{" "}
           <span className="font-bold">hair diary</span>
         </h1>
       </div>
